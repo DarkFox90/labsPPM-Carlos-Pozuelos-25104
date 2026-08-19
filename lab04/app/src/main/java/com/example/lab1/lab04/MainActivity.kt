@@ -78,6 +78,7 @@ fun Cuadro1(
                Column(
                    modifier = Modifier,
                    horizontalAlignment = Alignment.CenterHorizontally
+
                ) {
                    Text(
                        text = "Universidad del Valle de Guatemala",
@@ -95,21 +96,22 @@ fun Cuadro1(
                    )
                }
 
-               Row(
+               Row( // row principal
                    modifier = Modifier
                        .fillMaxWidth()
                ) {
                    Text(
-                       text = "Integrantes",
+                       text = "INTEGRANTES",
                        fontSize = 20.sp,
                        fontWeight = FontWeight.Bold,
-                       textAlign = TextAlign.Start
+                       textAlign = TextAlign.Start,
+                       modifier = Modifier.weight(1f)
+
                    )
 
                    Column(
                        modifier = Modifier
-                           .fillMaxWidth()
-                           .weight(2f)
+                           .weight(1f)
                    ) {
                        Text(
                            text = "Carlos Pozuelos",
@@ -134,20 +136,22 @@ fun Cuadro1(
                        .fillMaxWidth()
                ) {
                    Text(
-                       text = "Catedrático",
+                       text = "CATEDRÁTICO",
                        fontSize = 20.sp,
                        fontWeight = FontWeight.Bold,
-                       textAlign = TextAlign.Start
+                       textAlign = TextAlign.Start,
+                       modifier = Modifier.weight(1f)
+
                    )
 
                    Column(
                        modifier = Modifier
-                           .fillMaxWidth()
-                           .weight(2f)
+                           .weight(1f)
                    ) {
                        Text(
                            text = "Juan Carlos Durini",
                            fontSize = 16.sp,
+
                        )
                    }
                }
@@ -158,7 +162,8 @@ fun Cuadro1(
                    horizontalArrangement = Arrangement.Center
                ) {
                    Column(
-                       modifier = Modifier
+                       modifier = Modifier,
+                       horizontalAlignment = Alignment.CenterHorizontally
                    ) {
                        Text(
                            text = "Carlos Pozuelos Mendizábal",
