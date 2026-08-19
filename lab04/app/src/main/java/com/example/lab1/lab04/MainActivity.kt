@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             Lab04Theme(darkTheme = false, dynamicColor = false) {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Cuadro1(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier
                     )
                 }
             }
