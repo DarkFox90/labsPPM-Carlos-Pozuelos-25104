@@ -105,6 +105,28 @@ fun Cuadro1(
                        fontWeight = FontWeight.Bold,
                        textAlign = TextAlign.Start
                    )
+
+                   Column(
+                       modifier = Modifier
+                           .fillMaxWidth()
+                           .weight(2f)
+                   ) {
+                       Text(
+                           text = "Carlos Pozuelos",
+                           fontSize = 16.sp,
+                       )
+
+                       Text(
+                           text = "Andres Castro",
+                           fontSize = 16.sp,
+                       )
+
+                       Text(
+                           text = "Sebastian Garcia",
+                           fontSize = 16.sp,
+                       )
+                   }
+
                }
 
                Row(
@@ -117,19 +139,42 @@ fun Cuadro1(
                        fontWeight = FontWeight.Bold,
                        textAlign = TextAlign.Start
                    )
+
+                   Column(
+                       modifier = Modifier
+                           .fillMaxWidth()
+                           .weight(2f)
+                   ) {
+                       Text(
+                           text = "Juan Carlos Durini",
+                           fontSize = 16.sp,
+                       )
+                   }
                }
 
                Row(
                    modifier = Modifier
-                       .fillMaxWidth()
+                       .fillMaxWidth(),
+                   horizontalArrangement = Arrangement.Center
                ) {
-                   Text(
-                       text = "Carlos Pozuelos Mendizábal 25104",
-                       fontSize = 20.sp,
-                       fontWeight = FontWeight.Bold,
-                       textAlign = TextAlign.Center
+                   Column(
+                       modifier = Modifier
+                   ) {
+                       Text(
+                           text = "Carlos Pozuelos Mendizábal",
+                           fontSize = 16.sp,
+                           textAlign = TextAlign.Center
+                       )
 
-                   )
+                       Text(
+                           text = "25104",
+                           fontSize = 16.sp,
+                           textAlign = TextAlign.Center
+                       )
+
+                   }
+
+
                }
            }
        }
