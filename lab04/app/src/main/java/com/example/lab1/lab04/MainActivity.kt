@@ -132,12 +132,12 @@ fun Cuadro1(
                        )
 
                        Text(
-                           text = "Andres Castro",
+                           text = "Andrés Castro",
                            fontSize = 16.sp,
                        )
 
                        Text(
-                           text = "Sebastian Garcia",
+                           text = "Sebastián García",
                            fontSize = 16.sp,
                        )
                    }
