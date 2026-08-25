@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -27,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.lab1.lab05.ui.theme.Lab05Theme
 
 class MainActivity : ComponentActivity() {
@@ -53,13 +55,11 @@ fun layout(
         modifier = modifier.fillMaxSize()
     ) {
         val context = LocalContext.current
-        val modoOscuro = isSystemInDarkTheme()
-        val colorFondo = if (modoOscuro) Color(0xFF58C4E8) else Color(0xFF53A4E7)
-        val colorContenido = if (modoOscuro) Color(0xFF54646B) else Color(0xFF15ABE1)
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(colorFondo),
+                .background(MaterialTheme.colorScheme.primary)
+                .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
 
         ) {
@@ -67,14 +67,15 @@ fun layout(
             Icon(
                 painter = painterResource(R.drawable.ic_refresh1),
                 contentDescription = "icono de actualizacion",
-                tint = colorContenido
+                tint = MaterialTheme.colorScheme.onPrimary,
+                modifier = Modifier.size(24.dp)
             )
 
             Text(
                 text = "Actualización disponible",
                 textAlign = TextAlign.Center,
-                modifier = Modifier.weight(1f),
-                color = colorContenido
+                modifier = Modifier.weight(2f),
+                color = MaterialTheme.colorScheme.onPrimary
             )
 
             TextButton(
@@ -84,7 +85,10 @@ fun layout(
                     context.startActivity(intent)
                 }
             ) {
-                Text("Descargar")
+                Text(
+                    text = "Descargar",
+                    color = MaterialTheme.colorScheme.onPrimary
+                )
             }
 
         }
