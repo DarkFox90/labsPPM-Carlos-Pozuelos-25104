@@ -3,6 +3,7 @@ package com.example.lab1.lab05
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -31,6 +33,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.layout
@@ -150,7 +153,7 @@ fun layout(
                Row(
                    modifier = Modifier
                        .fillMaxWidth(),
-                   verticalAlignment = Alignment.CenterVertically
+                   verticalAlignment = Alignment.CenterVertically,
                ) {
                    Text(
                        text = "Graciela",
@@ -160,7 +163,12 @@ fun layout(
                    )
 
                    IconButton(
-                       onClick = { }
+                       onClick = {
+                           val mapUri = android.net.Uri.parse("geo:0,0?q=14.592072172451795, -90.49146779007258(Graciela)")
+                           val mapIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, mapUri)
+                           mapIntent.setPackage("com.google.android.apps.maps")
+                           context.startActivity(mapIntent)
+                       }
                    ) {
                        Icon(
                            painter = painterResource(R.drawable.ic_direction),
@@ -186,8 +194,17 @@ fun layout(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Button(
-                        onClick = {},
-                        shape = RoundedCornerShape(8.dp)
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "Carlos Pozuelos Mendizábal",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        modifier = Modifier
+                            .width(160.dp)
+                            .weight(1f)
                     ) {
                         Text(
                             text = "Iniciar"
@@ -195,7 +212,15 @@ fun layout(
                     }
 
                     TextButton(
-                        onClick = {}
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "Comfort food \nNormal (QQ)",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        },
+                        modifier = Modifier
+                            .weight(1f)
                     ) {
                         Text(
                             text = "detalles"
@@ -206,8 +231,6 @@ fun layout(
             }
         }
     }
-
-
 
 }
 
