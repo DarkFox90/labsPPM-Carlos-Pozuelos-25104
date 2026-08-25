@@ -131,7 +131,7 @@ fun layout(
             ) {
                 Text(
                     text = "Terminar jornada",
-                    color = Color(0xFFD974DB)
+                    color = Color(0xFFE11010)
                 )
             }
         }
@@ -191,6 +191,14 @@ fun layout(
                     ) {
                         Text(
                             text = "Iniciar"
+                        )
+                    }
+
+                    TextButton(
+                        onClick = {}
+                    ) {
+                        Text(
+                            text = "detalles"
                         )
                     }
                 }
