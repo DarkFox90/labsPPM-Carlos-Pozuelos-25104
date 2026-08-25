@@ -2,6 +2,7 @@ package com.example.lab1.lab05
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ToggleButton
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,8 +15,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -23,12 +26,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.lab1.lab05.ui.theme.Lab05Theme
 
 class MainActivity : ComponentActivity() {
@@ -63,7 +69,6 @@ fun layout(
             verticalAlignment = Alignment.CenterVertically
 
         ) {
-            //pendiente icono
             Icon(
                 painter = painterResource(R.drawable.ic_refresh1),
                 contentDescription = "icono de actualizacion",
@@ -91,6 +96,38 @@ fun layout(
                 )
             }
 
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+            ) {
+                Text(
+                    text = "Jueves",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 32.sp
+                )
+
+                Text(
+                    text = "24 de Septiembre",
+                    fontSize = 18.sp
+                )
+            }
+
+            OutlinedButton(
+                onClick = {},
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = "Terminar jornada",
+                    color = Color(0xFFD974DB)
+                )
+            }
         }
     }
 
