@@ -2,6 +2,7 @@ package com.example.lab1.lab05
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ToggleButton
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,8 +16,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -97,7 +103,7 @@ fun layout(
             }
 
         }
-        Row(
+        Row( //fecha de cumpleaños
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
@@ -127,6 +133,68 @@ fun layout(
                     text = "Terminar jornada",
                     color = Color(0xFFD974DB)
                 )
+            }
+        }
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+            ) {
+               Row(
+                   modifier = Modifier
+                       .fillMaxWidth(),
+                   verticalAlignment = Alignment.CenterVertically
+               ) {
+                   Text(
+                       text = "Graciela",
+                       fontSize = 32.sp,
+                       fontWeight = FontWeight.Bold,
+                       modifier = Modifier.weight(1f)
+                   )
+
+                   IconButton(
+                       onClick = { }
+                   ) {
+                       Icon(
+                           painter = painterResource(R.drawable.ic_direction),
+                           contentDescription = "icono de direccion ",
+                           tint = Color(0xFF4FE871),
+                           modifier = Modifier.size(28.dp)
+                       )
+                   }
+               }
+                Text(
+                    text = "Vidére, Blvd. Vista Hermosa zona 15",
+                    fontSize = 16.sp,
+                )
+
+                Text(
+                    text = "6:30AM  9:00PM",
+                    fontSize = 16.sp,
+                )
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(
+                        onClick = {},
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = "Iniciar"
+                        )
+                    }
+                }
+
             }
         }
     }
