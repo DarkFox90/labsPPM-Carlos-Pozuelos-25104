@@ -13,13 +13,18 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Directions
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -79,7 +84,7 @@ fun layout(
 
         ) {
             Icon(
-                painter = painterResource(R.drawable.ic_refresh1),
+                imageVector = Icons.Default.Refresh,
                 contentDescription = "icono de actualizacion",
                 tint = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier.size(24.dp)
@@ -171,7 +176,7 @@ fun layout(
                        }
                    ) {
                        Icon(
-                           painter = painterResource(R.drawable.ic_direction),
+                           imageVector = Icons.Default.Directions,
                            contentDescription = "icono de direccion ",
                            tint = Color(0xFF4FE871),
                            modifier = Modifier.size(28.dp)
@@ -182,6 +187,7 @@ fun layout(
                     text = "Vidére, Blvd. Vista Hermosa zona 15",
                     fontSize = 16.sp,
                 )
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
                     text = "6:30AM  9:00PM",
@@ -215,7 +221,7 @@ fun layout(
                         onClick = {
                             Toast.makeText(
                                 context,
-                                "Comfort food \nNormal (QQ)",
+                                "Variado \nNormal (QQ)",
                                 Toast.LENGTH_SHORT
                             ).show()
                         },
