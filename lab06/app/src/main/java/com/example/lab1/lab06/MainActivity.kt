@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,7 @@ import com.example.lab1.lab06.ui.theme.Lab06Theme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -37,7 +39,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             Lab06Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PantallaContador()
+                    PantallaContador(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -84,7 +88,7 @@ fun PantallaContador (modifier: Modifier = Modifier) {
                     }
                     historial = historial + Pair(valorActual, false)
                 },
-                modifier = Modifier.size(64.dp)
+                modifier = Modifier.size(56.dp)
             ) {
                 Text(
                     text = "-",
@@ -94,8 +98,8 @@ fun PantallaContador (modifier: Modifier = Modifier) {
 
             Text(
                 text = "$valorActual",
-                fontSize = 100.sp,
-                fontWeight = FontWeight.Light
+                fontSize = 72.sp,
+                fontWeight = FontWeight.Medium
             )
 
             FilledIconButton(
@@ -108,7 +112,7 @@ fun PantallaContador (modifier: Modifier = Modifier) {
                     }
                     historial = historial + Pair(valorActual, true)
                 },
-                modifier = Modifier.size(64.dp)
+                modifier = Modifier.size(56.dp)
             ) {
                 Text(
                     text = "+",
@@ -117,6 +121,41 @@ fun PantallaContador (modifier: Modifier = Modifier) {
                 )
             }
         }
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
+        ) {
+            Estadisticas(etiqueta = "Total incrementos:", valor = incrementosTotales)
+            Estadisticas(etiqueta = "Total decrementos:", valor = decrementosTotales)
+            Estadisticas(etiqueta = "Valor máximo:", valor = valorMax)
+            Estadisticas(etiqueta = "Total minimo:", valor = valorMin)
+
+            Estadisticas(etiqueta = "Total cambios:", valor = incrementosTotales + decrementosTotales)
+        }
+    }
+}
+
+@Composable
+fun Estadisticas(etiqueta: String, valor: Int) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = etiqueta,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+
+        Text(
+            text = "$valor",
+            fontSize = 20.sp
+
+        )
     }
 }
 
