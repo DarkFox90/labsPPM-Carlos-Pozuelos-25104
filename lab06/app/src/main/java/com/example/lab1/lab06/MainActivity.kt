@@ -4,14 +4,31 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lab1.lab06.ui.theme.Lab06Theme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Lab06Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    PantallaContador()
                 }
             }
         }
@@ -31,17 +45,85 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
+fun PantallaContador (modifier: Modifier = Modifier) {
+    var valorActual by rememberSaveable { mutableIntStateOf(0) }
+    var incrementosTotales by rememberSaveable {mutableIntStateOf(0) }
+    var decrementosTotales by rememberSaveable {mutableIntStateOf(0)}
+    var valorMax by rememberSaveable {mutableIntStateOf(0) }
+    var valorMin by rememberSaveable { mutableIntStateOf(0) }
+
+    var historial by rememberSaveable {mutableStateOf(listOf<Pair<Int, Boolean>>()) }
+
+    Column(
         modifier = modifier
-    )
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text (
+            text = "Carlos Pozuelos Mendizábal",
+            fontSize = 28.sp,
+            modifier = Modifier.padding(bottom = 32.dp),
+            textAlign = TextAlign.Center
+        )
+
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 32.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            FilledIconButton (
+                onClick = {
+                    valorActual--
+                    decrementosTotales++
+
+                    if (valorActual < valorMin) {
+                        valorMin = valorActual
+                    }
+                    historial = historial + Pair(valorActual, false)
+                },
+                modifier = Modifier.size(64.dp)
+            ) {
+                Text(
+                    text = "-",
+                    fontSize = 36.sp
+                )
+            }
+
+            Text(
+                text = "$valorActual",
+                fontSize = 100.sp,
+                fontWeight = FontWeight.Light
+            )
+
+            FilledIconButton(
+                onClick = {
+                    valorActual++
+                    incrementosTotales++
+
+                    if (valorActual > valorMax) {
+                        valorMax = valorActual
+                    }
+                    historial = historial + Pair(valorActual, true)
+                },
+                modifier = Modifier.size(64.dp)
+            ) {
+                Text(
+                    text = "+",
+                    fontSize = 36.sp,
+
+                )
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Lab06Theme {
-        Greeting("Android")
+        PantallaContador()
     }
 }
