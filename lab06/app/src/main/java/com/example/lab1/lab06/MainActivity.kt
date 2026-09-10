@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -177,6 +178,25 @@ fun PantallaContador (modifier: Modifier = Modifier) {
                     )
                 }
             }
+        }
+
+        Button(
+            onClick = {
+                valorActual = 0
+                incrementosTotales = 0
+                decrementosTotales = 0
+                valorMax = 0
+                valorMin = 0
+                historial = listOf()
+            },
+
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = "Reiniciar",
+                fontSize = 14.sp,
+            )
         }
     }
 }
